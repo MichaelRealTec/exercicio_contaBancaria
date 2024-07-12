@@ -5,14 +5,21 @@ public class Account {
 	private int numberAccount; // numeroConta
 	private String nameAccount; // nomeConta
 	private double balance; // balance = saldo
-	// private double deposit; // deposit = deposito
-	// private double withdraw; // withdraw = saque
+	private double deposit; // deposit = deposito
+	private double withdraw; // withdraw = saque
 	
 	// Método Construtor
+	public Account() {
+		
+	}
+	
+	
 	public Account(int numberAccount, String nameAccount, double deposit) {
 		this.numberAccount = numberAccount;
 		this.nameAccount = nameAccount;
-		this.deposit = deposit;
+		setDeposit(deposit);
+		
+		// this.deposit = deposit;
 	}
 	
 	// Métodos Getters e Setters
@@ -36,6 +43,30 @@ public class Account {
 		return balance;
 	}
 	
+	// Métodos
+	public void setDeposit(double deposit) {
+		this.deposit = deposit;
+		balance = balance + this.deposit;
+	}
+	
+	public void setWithdraw(double withdraw) {
+		this.withdraw = withdraw;
+		balance = balance - this.withdraw - 5.00;
+	}
+	
+	public String toString(){
+		return "Account " 
+				+ numberAccount 
+				+ ", "
+				+ "Holder: "
+				+ nameAccount
+				+ ", "
+				+ "Balance: $ "
+				+ String.format("%.2f%n", balance);				
+	}
+	
+	
+	/*
 	public void setDeposit(double deposit) {
 		this.deposit = deposit;
 	}
@@ -51,6 +82,6 @@ public class Account {
 	public double getWitdraw() {
 		return withdraw;
 	}
-	
+	*/
 	
 }
